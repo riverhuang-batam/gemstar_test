@@ -1,23 +1,26 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
-
+import { useEffect, useState } from "react";
+import axios from "axios";
+import Cryptos from "./api/Cryptos";
+import { CryptoTypes } from "./types/CryptoTypes";
 function App() {
+  const [cryptos, setCryptos] = useState<CryptoTypes[] | null>();
+  const url =
+    "https://api.coingecko.com/api/v3/coins/markets?vs_currency=idr&per_page=10";
+  useEffect(() => {
+    // const url = 'https://api.coingecko.com/api/v3/coins/markets?vs_currency=idr&per_page=10'
+    axios.get(url).then((datas) => {
+      console.log(datas);
+      setCryptos(datas.data);
+    });
+  }, []);
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+        {cryptos
+          ? cryptos.map((crypto) => {
+              return <Cryptos crypto={crypto} />;
+            })
+          : null}
       </header>
     </div>
   );
