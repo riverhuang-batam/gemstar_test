@@ -12,7 +12,7 @@ Netlify
 
 ## Production - 30% done
 ```
-"https://63c9135aaa77cb000872ae2e--gemstartest.netlify.app/"
+"https://gemstartest.netlify.app/"
 ```
 
 ## note
