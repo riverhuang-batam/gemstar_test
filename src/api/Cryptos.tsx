@@ -1,5 +1,3 @@
-
-import { JsxElement } from 'typescript';
 import {CryptoTypes} from '../types/CryptoTypes'
 
 export type AppProps = {
